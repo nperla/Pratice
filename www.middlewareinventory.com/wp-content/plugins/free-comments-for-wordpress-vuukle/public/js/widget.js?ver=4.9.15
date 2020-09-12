@@ -1,0 +1,34 @@
+jQuery(document).ready(
+    function ($) {
+        console.log(param);
+        console.log('vuukle version: ' + param.vuukle_version);
+        console.log('API key: ' + (param.api_key ? 'true' : 'false'));
+
+        $(".stories_widget_carousel #right").click(
+            function () {
+                var itemCount    = $(this).parent().parent().find(".carousel_item").size();
+                var currentIndex = $(this).parent().attr("title"); 
+                currentIndex++;
+                if(currentIndex == itemCount) {
+                    currentIndex = 0;
+                }
+                $(this).parent().next().css("left", currentIndex * -160);
+                $(this).parent().attr("title", currentIndex);
+            }
+        );
+        $(".stories_widget_carousel #left").click(
+            function () {
+                var itemCount    = $(this).parent().parent().find(".carousel_item").size();
+                var currentIndex = $(this).parent().attr("title"); 
+                currentIndex--;
+                if(currentIndex == -1) {
+                    currentIndex = itemCount-1;
+                }
+                $(this).parent().next().css("left", currentIndex * -160);
+                $(this).parent().attr("title", currentIndex);
+            }
+        );    
+        
+    
+    }
+);
